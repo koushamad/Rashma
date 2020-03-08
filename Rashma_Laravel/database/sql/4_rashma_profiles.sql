@@ -1,0 +1,1 @@
+INSERT INTO rashma.profiles (id, userId, `range`, activity, fullName, imageId, nationalCode, created_at, updated_at, deleted_at) VALUES (1, 1, 0, 0, 'Kousha Ghodsizad', null, null, '2020-02-03 01:06:45', null, null);

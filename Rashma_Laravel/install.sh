@@ -1,0 +1,1 @@
+bash -c "composer install && php artisan key:generate && php artisan migrate && php artisan db:seed && php artisan passport:install && php artisan telescope:install && php artisan cache:clear && php artisan apidoc:rebuild && chmod -R 777 storage"

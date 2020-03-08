@@ -1,0 +1,1151 @@
+{
+    "variables": [],
+    "info": {
+        "name": "Rashma API",
+        "_postman_id": "4de5edbd-8e25-44df-8bef-0654113bc2af",
+        "description": "",
+        "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.0.0\/collection.json"
+    },
+    "item": [
+        {
+            "name": "Auth",
+            "description": "",
+            "item": [
+                {
+                    "name": "Get Code",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "165.22.108.175:8000",
+                            "path": "api\/v1\/auth\/getCode",
+                            "query": []
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {token}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"phone\": \"velit\"\n}"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Get Token",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "165.22.108.175:8000",
+                            "path": "api\/v1\/auth\/getToken",
+                            "query": []
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {token}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"phone\": \"ipsam\",\n    \"code\": 12\n}"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Refresh Token",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "165.22.108.175:8000",
+                            "path": "api\/v1\/auth\/refreshToken",
+                            "query": []
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {token}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"token\": \"asperiores\",\n    \"refreshToken\": \"delectus\"\n}"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Update Request",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "165.22.108.175:8000",
+                            "path": "api\/v1\/user\/updateRequest",
+                            "query": []
+                        },
+                        "method": "PATCH",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {token}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"email\": \"officia\",\n    \"phone\": \"praesentium\"\n}"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Update Accept",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "165.22.108.175:8000",
+                            "path": "api\/v1\/user\/updateAccept",
+                            "query": []
+                        },
+                        "method": "PATCH",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {token}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"code\": \"assumenda\"\n}"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Category",
+            "description": "",
+            "item": [
+                {
+                    "name": "Search Category",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "165.22.108.175:8000",
+                            "path": "api\/v1\/category\/search\/:text",
+                            "query": [],
+                            "variable": [
+                                {
+                                    "id": "text",
+                                    "key": "text",
+                                    "value": "quo",
+                                    "description": "string"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {token}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Company",
+            "description": "",
+            "item": [
+                {
+                    "name": "Search Company",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "165.22.108.175:8000",
+                            "path": "api\/v1\/company\/search\/:text",
+                            "query": [],
+                            "variable": [
+                                {
+                                    "id": "text",
+                                    "key": "text",
+                                    "value": "laboriosam",
+                                    "description": "string"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {token}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Experience",
+            "description": "",
+            "item": [
+                {
+                    "name": "Create Experience",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "165.22.108.175:8000",
+                            "path": "api\/v1\/experience",
+                            "query": []
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {token}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"title\": \"ad\",\n    \"grade\": 13,\n    \"startDate\": \"ullam\",\n    \"endDate\": \"optio\",\n    \"company\": []\n}"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Update Experience",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "165.22.108.175:8000",
+                            "path": "api\/v1\/experience\/:experienceId",
+                            "query": [],
+                            "variable": [
+                                {
+                                    "id": "experienceId",
+                                    "key": "experienceId",
+                                    "value": "libero",
+                                    "description": "int"
+                                }
+                            ]
+                        },
+                        "method": "PATCH",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {token}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"title\": \"nam\",\n    \"grade\": 3,\n    \"startDate\": \"voluptatem\",\n    \"endDate\": \"officia\",\n    \"company\": []\n}"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Delete Experience",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "165.22.108.175:8000",
+                            "path": "api\/v1\/experience\/:experienceId",
+                            "query": [],
+                            "variable": [
+                                {
+                                    "id": "experienceId",
+                                    "key": "experienceId",
+                                    "value": "voluptates",
+                                    "description": "int"
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {token}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Licence",
+            "description": "",
+            "item": [
+                {
+                    "name": "Create Licence",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "165.22.108.175:8000",
+                            "path": "api\/v1\/licence",
+                            "query": []
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {token}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"title\": \"velit\",\n    \"grade\": 20,\n    \"startDate\": \"ea\",\n    \"endDate\": \"placeat\",\n    \"university\": []\n}"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Update Licence",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "165.22.108.175:8000",
+                            "path": "api\/v1\/licence\/:experienceId",
+                            "query": []
+                        },
+                        "method": "PATCH",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {token}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"title\": \"rerum\",\n    \"grade\": 9,\n    \"startDate\": \"sint\",\n    \"endDate\": \"id\",\n    \"university\": []\n}"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Delete Licence",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "165.22.108.175:8000",
+                            "path": "api\/v1\/licence\/:experienceId",
+                            "query": []
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {token}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Profile",
+            "description": "",
+            "item": [
+                {
+                    "name": "Get Profile Enums",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "165.22.108.175:8000",
+                            "path": "api\/v1\/enums",
+                            "query": []
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {token}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Get Profile",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "165.22.108.175:8000",
+                            "path": "api\/v1\/profile",
+                            "query": []
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {token}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Update Profile",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "165.22.108.175:8000",
+                            "path": "api\/v1\/profile",
+                            "query": []
+                        },
+                        "method": "PATCH",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {token}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"fullName\": \"aspernatur\",\n    \"nationalCode\": \"sint\",\n    \"cardNumber\": \"veniam\",\n    \"skills\": [],\n    \"categories\": []\n}"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Quiz",
+            "description": "",
+            "item": [
+                {
+                    "name": "Get Quiz",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "165.22.108.175:8000",
+                            "path": "api\/v1\/quiz\/:quizId",
+                            "query": [],
+                            "variable": [
+                                {
+                                    "id": "quizId",
+                                    "key": "quizId",
+                                    "value": "aut",
+                                    "description": "string"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {token}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Create Quiz",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "165.22.108.175:8000",
+                            "path": "api\/v1\/quiz",
+                            "query": []
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {token}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"title\": \"aut\",\n    \"description\": \"similique\",\n    \"grade\": \"ipsum\",\n    \"isEmergency\": true,\n    \"skills\": [],\n    \"categories\": []\n}"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Pay Quiz",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "165.22.108.175:8000",
+                            "path": "api\/v1\/payQuiz\/:quizId",
+                            "query": [],
+                            "variable": [
+                                {
+                                    "id": "quizId",
+                                    "key": "quizId",
+                                    "value": "molestias",
+                                    "description": "string"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {token}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Setting",
+            "description": "",
+            "item": [
+                {
+                    "name": "Get Setting",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "165.22.108.175:8000",
+                            "path": "api\/v1\/setting",
+                            "query": []
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {token}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Update Setting",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "165.22.108.175:8000",
+                            "path": "api\/v1\/setting",
+                            "query": []
+                        },
+                        "method": "PATCH",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {token}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"lang\": 8,\n    \"isNotify\": true,\n    \"isPublic\": true\n}"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Skill",
+            "description": "",
+            "item": [
+                {
+                    "name": "Search Skill",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "165.22.108.175:8000",
+                            "path": "api\/v1\/skill\/search\/:text",
+                            "query": [],
+                            "variable": [
+                                {
+                                    "id": "text",
+                                    "key": "text",
+                                    "value": "laboriosam",
+                                    "description": "string"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {token}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Test",
+            "description": "",
+            "item": [
+                {
+                    "name": "api\/test",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "165.22.108.175:8000",
+                            "path": "api\/test",
+                            "query": []
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {token}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Transaction",
+            "description": "",
+            "item": [
+                {
+                    "name": "Cash In",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "165.22.108.175:8000",
+                            "path": "api\/v1\/transaction\/cashIn",
+                            "query": []
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {token}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"cash\": 457825.089379927\n}"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Cash Out Approve",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "165.22.108.175:8000",
+                            "path": "api\/v1\/transaction\/cashOut",
+                            "query": []
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {token}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"cash\": 2571.39\n}"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Cash Out Approve",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "165.22.108.175:8000",
+                            "path": "api\/v1\/transaction\/cashOutApprove",
+                            "query": []
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {token}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"code\": \"velit\"\n}"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                }
+            ]
+        },
+        {
+            "name": "University",
+            "description": "",
+            "item": [
+                {
+                    "name": "Search University",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "165.22.108.175:8000",
+                            "path": "api\/v1\/university\/search\/:text",
+                            "query": [],
+                            "variable": [
+                                {
+                                    "id": "text",
+                                    "key": "text",
+                                    "value": "quia",
+                                    "description": "string"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {token}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Wallet",
+            "description": "",
+            "item": [
+                {
+                    "name": "Get Statistics",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "165.22.108.175:8000",
+                            "path": "api\/v1\/wallet",
+                            "query": []
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {token}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                }
+            ]
+        },
+        {
+            "name": "general",
+            "description": "",
+            "item": [
+                {
+                    "name": "Attach Image to profile",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "165.22.108.175:8000",
+                            "path": "api\/v1\/profile\/image",
+                            "query": []
+                        },
+                        "method": "PATCH",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {token}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"imageId\": \"culpa\"\n}"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Detach Image to profile",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "165.22.108.175:8000",
+                            "path": "api\/v1\/profile\/image",
+                            "query": []
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {token}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "api\/{fallbackPlaceholder}",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "165.22.108.175:8000",
+                            "path": "api\/:fallbackPlaceholder",
+                            "query": []
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {token}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                }
+            ]
+        }
+    ]
+}

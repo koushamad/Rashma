@@ -1,0 +1,1 @@
+INSERT INTO rashma.users (id, name, phone, code, token, refreshToken, phone_verified_at, email, email_verified_at, password, remember_token, created_at, updated_at, deleted_at) VALUES (1, 'Rashma', '+905465413420', null, null, null, '2020-02-03 01:03:58', 'kousha.ghodsizad@gmail.com', '2020-02-03 01:04:12', null, null, '2020-02-03 01:04:16', null, null);

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="rashma@localhost" uuid="f2bf3fda-8e19-4301-9036-a41b8ae5ba0d">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/rashma</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="rashma@localhost [2]" uuid="a056fb57-911f-4ee5-8f5d-2b41ce096898">
+      <driver-ref>mongo</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.dbschema.MongoJdbcDriver</jdbc-driver>
+      <jdbc-url>mongodb://localhost:27017/rashma</jdbc-url>
+    </data-source>
+  </component>
+</project>

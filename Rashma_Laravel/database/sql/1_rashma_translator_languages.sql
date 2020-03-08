@@ -1,0 +1,2 @@
+INSERT INTO rashma.translator_languages (id, locale, name, created_at, updated_at, deleted_at) VALUES (1, 'en', 'English', '2019-10-05 14:51:45', null, null);
+INSERT INTO rashma.translator_languages (id, locale, name, created_at, updated_at, deleted_at) VALUES (2, 'fa', 'Farsi', '2019-10-05 15:02:36', null, null);
