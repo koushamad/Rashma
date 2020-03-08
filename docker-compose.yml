@@ -35,6 +35,7 @@ services:
         - ./Rashma_Laravel:/application
         - ./Rashma_Docker/php-fpm/php-ini-overrides.ini:/etc/php/7.3/fpm/conf.d/99-overrides.ini
         - ./Rashma_Docker/php-fpm/crontab:/etc/cron.d/cron
+      command: sh -c "./install.sh"
 
     mongo:
       container_name: rashma-mongo
