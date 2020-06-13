@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f docker-compose-deploy.yaml --out ./Rashma_Docker/k8s
+    kompose.version: 1.21.0 (992df58d8)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: file-server
+  name: file-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: file-server
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f docker-compose-deploy.yaml --out ./Rashma_Docker/k8s
+        kompose.version: 1.21.0 (992df58d8)
+      creationTimestamp: null
+      labels:
+        io.kompose.network/backend: "true"
+        io.kompose.service: file-server
+    spec:
+      containers:
+      - image: koushamad/rashma-file-server:latest
+        imagePullPolicy: ""
+        name: file-server
+        ports:
+        - containerPort: 8080
+        resources: {}
+        volumeMounts:
+        - mountPath: /app/tmp
+          name: file-server-claim0
+      restartPolicy: Always
+      serviceAccountName: ""
+      volumes:
+      - name: file-server-claim0
+        persistentVolumeClaim:
+          claimName: file-server-claim0
+status: {}
