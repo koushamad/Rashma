@@ -7,7 +7,7 @@ import (
 )
 var(
 	config = &bongo.Config{
-		ConnectionString: "localhost",
+		ConnectionString: "185.165.42.193",
 		Database:         "rashma",
 	}
 	once sync.Once

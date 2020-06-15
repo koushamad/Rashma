@@ -19,7 +19,7 @@ var (
 
 func Init() *Mysql {
 	once.Do(func() {
-		db, err := gorm.Open("mysql", "rashma:rashma@/rashma")
+		db, err := gorm.Open("185.165.42.193", "rashma:rashma@/rashma")
 		if err != nil {panic(err.Error())}
 		mysql = &Mysql{db}
 	})
