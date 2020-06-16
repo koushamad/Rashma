@@ -5,7 +5,6 @@ apt-get -y --no-install-recommends install cron  php-memcached php7.3-mysql php7
 apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
 
 composer install
-php artisan key:generate
 php artisan migrate
 php artisan db:seed
 php artisan passport:install
