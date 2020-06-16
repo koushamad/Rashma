@@ -42,9 +42,7 @@ services:
     webserver:
       image: nginx:alpine
       container_name: rashma-webserver
-      working_dir: /application
       volumes:
-          - ./Rashma_Laravel:/application
           - ./Rashma_Docker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
       ports:
        - "80:80"
