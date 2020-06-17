@@ -13,7 +13,8 @@ spec:
   selector:
     matchLabels:
       io.kompose.service: mysql
-  strategy: {}
+  strategy:
+    type: Recreate
   template:
     metadata:
       annotations:
@@ -21,7 +22,6 @@ spec:
         kompose.version: 1.21.0 (992df58d8)
       creationTimestamp: null
       labels:
-        io.kompose.network/backend: "true"
         io.kompose.service: mysql
     spec:
       containers:
@@ -42,7 +42,14 @@ spec:
         ports:
         - containerPort: 3306
         resources: {}
+        volumeMounts:
+        - mountPath: /application
+          name: mysql-claim0
+        workingDir: /application
       restartPolicy: Always
       serviceAccountName: ""
-      volumes: null
+      volumes:
+      - name: mysql-claim0
+        persistentVolumeClaim:
+          claimName: mysql-claim0
 status: {}

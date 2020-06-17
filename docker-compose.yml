@@ -92,3 +92,16 @@ services:
         dockerfile: Dockerfile
       ports:
         - "9000:9000"
+
+    git-server:
+      image: koushamad/rashma-git-server:latest
+      container_name: rashma-git
+      build:
+        context: .
+        dockerfile: Dockerfile
+      working_dir: /application
+      volumes:
+        - .:/application
+        - ./crontab:/etc/cron.d/cron
+      ports:
+        - "9000:9000"

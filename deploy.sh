@@ -14,18 +14,19 @@ if [ $state == "live" ]; then
     docker push koushamad/rashma-php-fpm:latest
     docker push koushamad/rashma-file-server:latest
     docker koushamad/rashma-socket-server:latest
+    docker koushamad/rashma-git-server:latest
 
-    docker-compose config > docker-compose-deploy.yaml && kompose convert -f docker-compose-deploy.yaml --out ./docker/k8s
+    docker-compose config > docker-compose-deploy.yaml && kompose convert -f docker-compose-deploy.yaml --out ./Rashma_Docker/k8s
     docker-compose down
     rm -rvf docker-compose-deploy.yaml
   fi
 
   if [ $state == "up" ]; then
-    kubectl create -f ./docker/k8s --save-config
+    kubectl create -f ./Rashma_Docker/k8s --save-config
   fi
 
   if [ $state == "down" ]; then
-    kubectl delete -f ./docker/k8s
+    kubectl delete -f ./Rashma_Docker/k8s
   fi
 fi
 

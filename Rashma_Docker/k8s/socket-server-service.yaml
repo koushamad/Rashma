@@ -10,8 +10,8 @@ metadata:
   name: socket-server
 spec:
   ports:
-  - name: "9001"
-    port: 9001
+  - name: "9000"
+    port: 9000
     targetPort: 9000
   selector:
     io.kompose.service: socket-server

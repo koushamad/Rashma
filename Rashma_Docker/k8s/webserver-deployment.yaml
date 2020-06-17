@@ -22,7 +22,6 @@ spec:
         kompose.version: 1.21.0 (992df58d8)
       creationTimestamp: null
       labels:
-        io.kompose.network/backend: "true"
         io.kompose.service: webserver
     spec:
       containers:
@@ -38,7 +37,6 @@ spec:
           name: webserver-claim0
         - mountPath: /etc/nginx/conf.d/default.conf
           name: webserver-claim1
-        workingDir: /application
       restartPolicy: Always
       serviceAccountName: ""
       volumes:

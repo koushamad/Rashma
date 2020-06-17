@@ -10,8 +10,8 @@ metadata:
   name: socketio-client-tool
 spec:
   ports:
-  - name: "9002"
-    port: 9002
+  - name: "9001"
+    port: 9001
     targetPort: 8080
   selector:
     io.kompose.service: socketio-client-tool
