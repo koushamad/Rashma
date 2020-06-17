@@ -111,5 +111,3 @@ services:
         - .:/application
         - ./crontab:/etc/cron.d/cron
       command: sh -c "./upddate.sh"
-      ports:
-        - "22:22"

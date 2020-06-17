@@ -8,12 +8,15 @@ if [ $state == "live" ]; then
   read state
 
   if [ $state == "build" ]; then
+    git commit -a -m "deploy"
+    git push
+
     docker rm -f $(docker ps -aq)
     docker volume rm $(docker volume ls -q)
-    docker rmi -f rashma-php-fpm koushamad/rashma-php-fpm
-    docker rmi -f rashma_file-server koushamad/rashma_file-server
-    docker rmi -f rashma-socket-server koushamad/rashma-socket-server
-    docker rmi -f rashma-git-server koushamad/rashma-git-server
+    docker rmi -f koushamad/rashma-php-fpm
+    docker rmi -f koushamad/rashma_file-server
+    docker rmi -f koushamad/rashma-socket-server
+    docker rmi -f koushamad/rashma-git-server
 
     docker-compose up -d --build
 
