@@ -10,11 +10,17 @@ if [ $state == "live" ]; then
   if [ $state == "build" ]; then
     docker rm -f $(docker ps -aq)
     docker volume rm $(docker volume ls -q)
+    docker rmi -f rashma-php-fpm koushamad/rashma-php-fpm
+    docker rmi -f rashma_file-server koushamad/rashma_file-server
+    docker rmi -f rashma-socket-server koushamad/rashma-socket-server
+    docker rmi -f rashma-git-server koushamad/rashma-git-server
+
     docker-compose up -d --build
+
     docker push koushamad/rashma-php-fpm:latest
     docker push koushamad/rashma-file-server:latest
-    docker koushamad/rashma-socket-server:latest
-    docker koushamad/rashma-git-server:latest
+    docker push koushamad/rashma-socket-server:latest
+    docker push koushamad/rashma-git-server:latest
 
     docker-compose config > docker-compose-deploy.yaml && kompose convert -f docker-compose-deploy.yaml --out ./Rashma_Docker/k8s
     docker-compose down

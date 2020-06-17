@@ -27,7 +27,7 @@ spec:
       containers:
       - image: koushamad/rashma-file-server:latest
         imagePullPolicy: ""
-        name: file-server
+        name: rashma-file
         ports:
         - containerPort: 8080
         resources: {}

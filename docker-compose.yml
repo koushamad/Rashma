@@ -4,8 +4,13 @@
 version: "3.1"
 services:
     redis:
-      image: redis:alpine
-      container_name: rashma-redis
+      image: library/redis:6.0.4
+      container_name: 'rashma-redis'
+      restart: unless-stopped
+      volumes:
+        - ./docker/redis/data:/data
+      ports:
+        - "6379:6379"
 
     mysql:
       image: mysql:8.0
@@ -76,32 +81,35 @@ services:
       command: sh -c "./install.sh"
 
     file-server:
-      image: koushamad/rashma-file-server:latest
       build:
         context: ./Rashma_File
         dockerfile: Dockerfile
+      image: koushamad/rashma-file-server:latest
+      container_name: rashma-file
       volumes:
         - ./Rashma_Docker/tmp:/app/tmp
       ports:
         - "8080:8080"
     
     socket-server:
-      image: koushamad/rashma-socket-server:latest
       build:
         context: ./Rashma_Socket
         dockerfile: Dockerfile
+      image: koushamad/rashma-socket-server:latest
+      container_name: rashma-socket
       ports:
         - "9000:9000"
 
     git-server:
-      image: koushamad/rashma-git-server:latest
-      container_name: rashma-git
       build:
         context: .
         dockerfile: Dockerfile
+      image: koushamad/rashma-git-server:latest
+      container_name: rashma-git
       working_dir: /application
       volumes:
         - .:/application
         - ./crontab:/etc/cron.d/cron
+      command: sh -c "./upddate.sh"
       ports:
-        - "9000:9000"
+        - "22:22"
