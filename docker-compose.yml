@@ -109,5 +109,5 @@ services:
       working_dir: /application
       volumes:
         - .:/application
-        - ./crontab:/etc/cron.d/cron
+        - ./crontab:/etc/periodic/15min
       command: sh -c "./upddate.sh"

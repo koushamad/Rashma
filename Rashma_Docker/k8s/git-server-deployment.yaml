@@ -25,11 +25,13 @@ spec:
         io.kompose.service: git-server
     spec:
       containers:
-      - image: koushamad/rashma-git-server:latest
+      - args:
+        - sh
+        - -c
+        - ./upddate.sh
+        image: koushamad/rashma-git-server:latest
         imagePullPolicy: ""
         name: rashma-git
-        ports:
-        - containerPort: 9000
         resources: {}
         volumeMounts:
         - mountPath: /application
