@@ -8,7 +8,7 @@ import (
 )
 var(
 	config = &bongo.Config{
-		ConnectionString: os.Getenv("mongo"),
+		ConnectionString: os.Getenv("DB_MONGO_HOST"),
 		Database:         "rashma",
 	}
 	once sync.Once

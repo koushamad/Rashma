@@ -20,7 +20,7 @@ var (
 
 func Init() *Mysql {
 	once.Do(func() {
-		db, err := gorm.Open(os.Getenv("mysql"), "rashma:rashma@/rashma")
+		db, err := gorm.Open(os.Getenv("DB_MYSQL_HOST"), "rashma:rashma@/rashma")
 		if err != nil {panic(err.Error())}
 		mysql = &Mysql{db}
 	})

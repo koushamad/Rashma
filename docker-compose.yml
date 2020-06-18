@@ -67,6 +67,7 @@ services:
 
     socketio-client-tool:
       image: amritb/socketio-client-tool:latest
+      container_name: rashma-socket-client
       ports:
         - "9001:8080"
 
@@ -75,6 +76,7 @@ services:
       build: ./Rashma_Docker/php-fpm
       container_name: rashma-php-fpm
       working_dir: /application
+
       volumes:
         - ./Rashma_Laravel:/application
         - ./Rashma_Docker/php-fpm/php-ini-overrides.ini:/etc/php/7.3/fpm/conf.d/99-overrides.ini
@@ -87,6 +89,10 @@ services:
         dockerfile: Dockerfile
       image: koushamad/rashma-file-server:latest
       container_name: rashma-file
+      environment:
+        DB_HOST: mysql
+        DB_MONGO_HOST: mongo
+        REDIS_HOST: reddis
       volumes:
         - ./Rashma_Docker/tmp:/app/tmp
       ports:
@@ -98,6 +104,9 @@ services:
         dockerfile: Dockerfile
       image: koushamad/rashma-socket-server:latest
       container_name: rashma-socket
+      environment:
+        DB_MYSQL_HOST: mysql
+        DB_MONGO_HOST: mongo
       ports:
         - "1000:1000"
 
