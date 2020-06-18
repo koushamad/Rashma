@@ -46,6 +46,7 @@ services:
 
     rabbitmq:
       image: rabbitmq
+      container_name: rashma-rabbit
       environment:
         RABBITMQ_DEFAULT_USER: rabbitmq
         RABBITMQ_DEFAULT_PASSWORD: rabbitmq
@@ -98,7 +99,7 @@ services:
       image: koushamad/rashma-socket-server:latest
       container_name: rashma-socket
       ports:
-        - "9000:9000"
+        - "1000:1000"
 
     git-server:
       build:
@@ -109,5 +110,4 @@ services:
       working_dir: /application
       volumes:
         - .:/application
-        - ./crontab:/etc/periodic/15min
       command: sh -c "./upddate.sh"

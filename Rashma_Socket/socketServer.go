@@ -11,11 +11,10 @@ import (
 
 func main() {
 	Boot()
-	//setup http server
 	serveMux := http.NewServeMux()
 	serveMux.Handle("/io/", socket.Init())
-	color.Green("start to listen port 9000")
-	log.Panic(http.ListenAndServe(":9000", serveMux))
+	color.Green("start to listen port 1000")
+	log.Panic(http.ListenAndServe(":1000", serveMux))
 }
 
 func Boot() {

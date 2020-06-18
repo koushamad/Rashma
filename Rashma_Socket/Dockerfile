@@ -11,6 +11,6 @@ WORKDIR /app
 RUN go get -d -v -t
 RUN go build -o socketServer .
 
-EXPOSE 9000
+EXPOSE 1000
 
 CMD ["./socketServer"]
