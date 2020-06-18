@@ -36,8 +36,6 @@ spec:
         volumeMounts:
         - mountPath: /application
           name: git-server-claim0
-        - mountPath: /etc/cron.d/cron
-          name: git-server-claim1
         workingDir: /application
       restartPolicy: Always
       serviceAccountName: ""
@@ -45,7 +43,4 @@ spec:
       - name: git-server-claim0
         persistentVolumeClaim:
           claimName: git-server-claim0
-      - name: git-server-claim1
-        persistentVolumeClaim:
-          claimName: git-server-claim1
 status: {}

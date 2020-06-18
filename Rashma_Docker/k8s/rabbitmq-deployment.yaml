@@ -44,7 +44,7 @@ spec:
           value: verify_none
         image: rabbitmq
         imagePullPolicy: ""
-        name: rabbitmq
+        name: rashma-rabbit
         ports:
         - containerPort: 15671
         - containerPort: 15672

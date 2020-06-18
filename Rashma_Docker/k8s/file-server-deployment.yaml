@@ -25,7 +25,14 @@ spec:
         io.kompose.service: file-server
     spec:
       containers:
-      - image: koushamad/rashma-file-server:latest
+      - env:
+        - name: DB_HOST
+          value: mysql
+        - name: DB_MONGO_HOST
+          value: mongo
+        - name: REDIS_HOST
+          value: reddis
+        image: koushamad/rashma-file-server:latest
         imagePullPolicy: ""
         name: rashma-file
         ports:

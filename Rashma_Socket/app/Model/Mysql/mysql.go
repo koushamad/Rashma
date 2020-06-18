@@ -3,7 +3,6 @@ package mysql
 import (
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
-	"os"
 	"sync"
 )
 
@@ -20,7 +19,7 @@ var (
 
 func Init() *Mysql {
 	once.Do(func() {
-		db, err := gorm.Open(os.Getenv("DB_MYSQL_HOST"), "rashma:rashma@/rashma")
+		db, err := gorm.Open("mysql", "rashma:rashma@/rashma")
 		if err != nil {panic(err.Error())}
 		mysql = &Mysql{db}
 	})

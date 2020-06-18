@@ -24,11 +24,16 @@ spec:
         io.kompose.service: socket-server
     spec:
       containers:
-      - image: koushamad/rashma-socket-server:latest
+      - env:
+        - name: DB_MONGO_HOST
+          value: mongo
+        - name: DB_MYSQL_HOST
+          value: mysql
+        image: koushamad/rashma-socket-server:latest
         imagePullPolicy: ""
         name: rashma-socket
         ports:
-        - containerPort: 9000
+        - containerPort: 1000
         resources: {}
       restartPolicy: Always
       serviceAccountName: ""

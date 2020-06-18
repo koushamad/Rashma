@@ -3,12 +3,11 @@ package mongo
 import (
 	"github.com/go-bongo/bongo"
 	"log"
-	"os"
 	"sync"
 )
 var(
 	config = &bongo.Config{
-		ConnectionString: os.Getenv("DB_MONGO_HOST"),
+		ConnectionString: "mongo",
 		Database:         "rashma",
 	}
 	once sync.Once
