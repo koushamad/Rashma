@@ -3,7 +3,7 @@
 ###############################################################################
 version: "3.1"
 services:
-    redis:
+    rashma-redis:
       image: library/redis:6.0.4
       container_name: 'rashma-redis'
       restart: unless-stopped
@@ -14,7 +14,7 @@ services:
       networks:
         - backend
 
-    mysql:
+    rashma-mysql:
       image: mysql:8.0
       container_name: rashma-mysql
       working_dir: /application
@@ -32,7 +32,7 @@ services:
       networks:
         - backend
 
-    mongo:
+    rashma-mongo:
       container_name: rashma-mongo
       image: mongo
       ports:
@@ -40,7 +40,7 @@ services:
       networks:
         - backend
 
-    webserver:
+    rashma-webserver:
       image: nginx:alpine
       container_name: rashma-webserver
       volumes:
@@ -50,13 +50,13 @@ services:
        - 80:80
        - 433:433
       links:
-        - php-fpm
+        - rashma-php-fpm
       depends_on:
-        - php-fpm
+        - rashma-php-fpm
       networks:
         - backend
 
-    rabbitmq:
+    rashma-rabbitmq:
       image: rabbitmq
       container_name: rashma-rabbit
       environment:
@@ -79,7 +79,7 @@ services:
       networks:
         - backend
 
-    socketio-client-tool:
+    rashma-socketio-client-tool:
       image: amritb/socketio-client-tool:latest
       container_name: rashma-socket-client
       ports:
@@ -87,7 +87,7 @@ services:
       networks:
         - backend
 
-    php-fpm:
+    rashma-php-fpm:
       image: koushamad/rashma-php-fpm:latest
       build: ./Rashma_Docker/php-fpm
       container_name: rashma-php-fpm
@@ -98,64 +98,65 @@ services:
         - ./Rashma_Docker/php-fpm/crontab:/etc/cron.d/cron
       command: sh -c "./install.sh"
       links:
-        - redis
-        - mongo
-        - mysql
+        - rashma-redis
+        - rashma-mongo
+        - rashma-mysql
       depends_on:
-        - redis
-        - mongo
-        - mysql
+        - rashma-redis
+        - rashma-mongo
+        - rashma-mysql
       networks:
         - backend
 
-    file-server:
+    rashma-file-server:
       build:
         context: ./Rashma_File
         dockerfile: Dockerfile
       image: koushamad/rashma-file-server:latest
       container_name: rashma-file
       environment:
-        DB_HOST: mysql
-        DB_MONGO_HOST: mongo
-        REDIS_HOST: reddis
+        DB_HOST: rashma-mysql
+        DB_MONGO_HOST: rashma-mongo
+        REDIS_HOST: rashma-reddis
       volumes:
         - ./Rashma_Docker/tmp:/app/tmp
       ports:
         - 8080:8080
       links:
-        - redis
-        - mongo
-        - mysql
+        - rashma-redis
+        - rashma-mongo
+        - rashma-mysql
       depends_on:
-        - redis
-        - mongo
-        - mysql
+        - rashma-redis
+        - rashma-mongo
+        - rashma-mysql
       networks:
         - backend
-    
-    socket-server:
+
+    rashma-socket-server:
       build:
         context: ./Rashma_Socket
         dockerfile: Dockerfile
       image: koushamad/rashma-socket-server:latest
       container_name: rashma-socket
       environment:
-        DB_MYSQL_HOST: mysql
-        DB_MONGO_HOST: mongo
+        DB_CONNECTION: mysql
+        DB_HOST: rashma:rashma@tcp(rashma-mysql:3306)/rashma
+        DB_MONGO_HOST: rashma-mongo
       ports:
         - 1000:1000
       links:
-        - redis
-        - mongo
-        - mysql
+        - rashma-redis
+        - rashma-mongo
+        - rashma-mysql
       depends_on:
-        - redis
-        - mongo
-        - mysql
+        - rashma-redis
+        - rashma-mongo
+        - rashma-mysql
       networks:
         - backend
 
-    git-server:
+    rashma-git-server:
       build:
         context: .
         dockerfile: Dockerfile
