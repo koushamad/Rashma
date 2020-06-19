@@ -22,6 +22,7 @@ spec:
         kompose.version: 1.21.0 (992df58d8)
       creationTimestamp: null
       labels:
+        io.kompose.network/backend: "true"
         io.kompose.service: rabbitmq
     spec:
       containers:
