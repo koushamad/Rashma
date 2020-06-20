@@ -30,14 +30,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: sekassel-research/actions-rancher-update@1.0.0
-      with:
-        rancher_url: https://dashboard.docker.host/v3
-        rancher_access: ${{ secrets.RANCHER_ACCESS }}
-        rancher_key: ${{ secrets.RANCHER_KEY }}
-        project_id: rashma
-        stack_name: rashma
-        service_name: rashma-php-fpm
-        docker_image: koushamad/rashma-php-fpm:latest
+        with:
+          rancher_url: https://dashboard.docker.host/v3
+          rancher_access: ${{ secrets.RANCHER_ACCESS }}
+          rancher_key: ${{ secrets.RANCHER_KEY }}
+          project_id: rashma
+          stack_name: rashma
+          service_name: rashma-php-fpm
+          docker_image: koushamad/rashma-php-fpm:latest
       - uses: sekassel-research/actions-rancher-update@1.0.0
         with:
           rancher_url: https://dashboard.docker.host/v3
