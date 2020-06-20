@@ -13,5 +13,5 @@ func main()  {
 	http.Handle("/download/", http.StripPrefix("/download/", http.FileServer(http.Dir(UPLOAD_PATH))))
 
 	log.Print("Server started")
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	log.Fatal(http.ListenAndServe(":8000", nil))
 }

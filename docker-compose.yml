@@ -63,25 +63,15 @@ services:
         - backend
 
     rashma-rabbitmq:
-      image: rabbitmq
-      container_name: rashma-rabbit
-      restart: unless-stopped
+      image: library/rabbitmq:3.7.5-management
+      container_name: 'rashma-rabbitmq'
       environment:
-        RABBITMQ_DEFAULT_USER: ${RABBITMQ_USER}
-        RABBITMQ_DEFAULT_PASSWORD: ${RABBITMQ_PASS}
-        RABBITMQ_DEFAULT_VHOST: /
-        RABBITMQ_SSL_CACERTFILE: /rootCA.pem
-        RABBITMQ_SSL_CERTFILE: /rootCA.pem
-        RABBITMQ_SSL_KEYFILE: /rootCA.key
-        RABBITMQ_SSL_VERIFY: verify_none
-        RABBITMQ_SSL_FAIL_IF_NO_PEER_CERT: "false"
-      volumes:
-        - "./Rashma_Docker/rabbitmq/rootCA.pem:/rootCA.pem:ro"
-        - "./Rashma_Docker/rabbitmq/rootCA.key:/rootCA.key:ro"
+        RABBITMQ_ERLANG_COOKIE: ${RABBITMQ_ERLANG_COOKIE}
+        RABBITMQ_DEFAULT_USER: ${RABBIT_USER}
+        RABBITMQ_DEFAULT_PASS: ${RABBIT_PASSWORD}
+        RABBITMQ_DEFAULT_VHOST: ${RABBITMQ_DEFAULT_VHOST}
       ports:
-        - 15671:15671
         - 15672:15672
-        - 5671:5671
         - 5672:5672
       networks:
         - backend
@@ -91,7 +81,7 @@ services:
       container_name: rashma-socket-client
       restart: unless-stopped
       ports:
-        - 9001:8080
+        - 8080:8080
       networks:
         - backend
 
@@ -114,6 +104,8 @@ services:
         - rashma-redis
         - rashma-mongo
         - rashma-mysql
+      ports:
+        - 9000:9000
       networks:
         - backend
 
@@ -131,7 +123,7 @@ services:
       volumes:
         - ./Rashma_Docker/tmp:/app/tmp
       ports:
-        - 8080:8080
+        - 8000:8000
       links:
         - rashma-redis
         - rashma-mongo
