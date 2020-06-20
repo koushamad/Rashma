@@ -13,8 +13,7 @@ spec:
   selector:
     matchLabels:
       io.kompose.service: rashma-rabbitmq
-  strategy:
-    type: Recreate
+  strategy: {}
   template:
     metadata:
       annotations:
@@ -27,47 +26,22 @@ spec:
     spec:
       containers:
       - env:
-        - name: RABBITMQ_DEFAULT_PASSWORD
-          value: rabbitmq
+        - name: RABBITMQ_DEFAULT_PASS
+          value: kousha
         - name: RABBITMQ_DEFAULT_USER
-          value: rabbitmq
+          value: kousha
         - name: RABBITMQ_DEFAULT_VHOST
           value: /
-        - name: RABBITMQ_SSL_CACERTFILE
-          value: /rootCA.pem
-        - name: RABBITMQ_SSL_CERTFILE
-          value: /rootCA.pem
-        - name: RABBITMQ_SSL_FAIL_IF_NO_PEER_CERT
-          value: "false"
-        - name: RABBITMQ_SSL_KEYFILE
-          value: /rootCA.key
-        - name: RABBITMQ_SSL_VERIFY
-          value: verify_none
-        image: rabbitmq
+        - name: RABBITMQ_ERLANG_COOKIE
+          value: SWQOKODSQALRPCLNMEQG
+        image: library/rabbitmq:3.7.5-management
         imagePullPolicy: ""
-        name: rashma-rabbit
+        name: rashma-rabbitmq
         ports:
-        - containerPort: 15671
         - containerPort: 15672
-        - containerPort: 5671
         - containerPort: 5672
         resources: {}
-        volumeMounts:
-        - mountPath: /rootCA.pem
-          name: rashma-rabbitmq-claim0
-          readOnly: true
-        - mountPath: /rootCA.key
-          name: rashma-rabbitmq-claim1
-          readOnly: true
       restartPolicy: Always
       serviceAccountName: ""
-      volumes:
-      - name: rashma-rabbitmq-claim0
-        persistentVolumeClaim:
-          claimName: rashma-rabbitmq-claim0
-          readOnly: true
-      - name: rashma-rabbitmq-claim1
-        persistentVolumeClaim:
-          claimName: rashma-rabbitmq-claim1
-          readOnly: true
+      volumes: null
 status: {}

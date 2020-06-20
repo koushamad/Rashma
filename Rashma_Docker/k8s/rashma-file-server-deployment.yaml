@@ -37,7 +37,7 @@ spec:
         imagePullPolicy: ""
         name: rashma-file
         ports:
-        - containerPort: 8080
+        - containerPort: 8000
         resources: {}
         volumeMounts:
         - mountPath: /app/tmp

@@ -10,8 +10,8 @@ metadata:
   name: rashma-socketio-client-tool
 spec:
   ports:
-  - name: "9001"
-    port: 9001
+  - name: "8080"
+    port: 8080
     targetPort: 8080
   selector:
     io.kompose.service: rashma-socketio-client-tool
