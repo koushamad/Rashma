@@ -16,10 +16,6 @@ jobs:
         uses: koushamad/Rashma@master
         with:
           fetch-depth: 1
-      - name: Test
-        run: echo ls
-      - name: Test
-        run: echo pwd
       - name: Login to DockerHub Registry
         run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
       - name: Build the docker-compose stack
