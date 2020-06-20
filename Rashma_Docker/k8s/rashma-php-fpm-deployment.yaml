@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f docker-compose-deploy.yaml --out ./Rashma_Docker/k8s
+    kompose.version: 1.21.0 (992df58d8)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: rashma-php-fpm
+  name: rashma-php-fpm
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: rashma-php-fpm
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f docker-compose-deploy.yaml --out ./Rashma_Docker/k8s
+        kompose.version: 1.21.0 (992df58d8)
+      creationTimestamp: null
+      labels:
+        io.kompose.network/backend: "true"
+        io.kompose.service: rashma-php-fpm
+    spec:
+      containers:
+      - args:
+        - sh
+        - -c
+        - ./install.sh
+        image: koushamad/rashma-php-fpm:latest
+        imagePullPolicy: ""
+        name: rashma-php-fpm
+        resources: {}
+        volumeMounts:
+        - mountPath: /application
+          name: rashma-php-fpm-claim0
+        - mountPath: /etc/php/7.3/fpm/conf.d/99-overrides.ini
+          name: rashma-php-fpm-claim1
+        - mountPath: /etc/cron.d/cron
+          name: rashma-php-fpm-claim2
+        workingDir: /application
+      restartPolicy: Always
+      serviceAccountName: ""
+      volumes:
+      - name: rashma-php-fpm-claim0
+        persistentVolumeClaim:
+          claimName: rashma-php-fpm-claim0
+      - name: rashma-php-fpm-claim1
+        persistentVolumeClaim:
+          claimName: rashma-php-fpm-claim1
+      - name: rashma-php-fpm-claim2
+        persistentVolumeClaim:
+          claimName: rashma-php-fpm-claim2
+status: {}

@@ -1,0 +1,73 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "13"
+    field.cattle.io/creatorId: u-fvwjn
+    field.cattle.io/publicEndpoints: '[{"addresses":["185.165.42.193"],"port":80,"protocol":"HTTP","serviceName":"rashma:ingress-ebf6ccf363df7d8acc6dcdade95cb1e4","ingressName":"rashma:rafra","hostname":"rafra.ir","path":"/","allNodes":true},{"addresses":["185.165.42.193"],"port":30165,"protocol":"TCP","serviceName":"rashma:nginx-nodeport","allNodes":true},{"addresses":["185.165.42.193"],"port":80,"protocol":"HTTP","serviceName":"rashma:ingress-02f853b2d258766c7117a0c6eccd1bf7","ingressName":"rashma:rashma","hostname":"rashma.ir","path":"/","allNodes":true}]'
+  creationTimestamp: null
+  generation: 1
+  labels:
+    cattle.io/creator: norman
+    workload.user.cattle.io/workloadselector: deployment-rashma-nginx
+  name: nginx
+  selfLink: /apis/apps/v1/namespaces/rashma/deployments/nginx
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      workload.user.cattle.io/workloadselector: deployment-rashma-nginx
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+    type: RollingUpdate
+  template:
+    metadata:
+      annotations:
+        cattle.io/timestamp: "2020-06-20T07:38:51Z"
+        field.cattle.io/ports: '[[{"containerPort":80,"dnsName":"nginx-nodeport","kind":"NodePort","name":"tcp","protocol":"TCP","sourcePort":0}]]'
+      creationTimestamp: null
+      labels:
+        workload.user.cattle.io/workloadselector: deployment-rashma-nginx
+    spec:
+      containers:
+      - image: nginx:alpine
+        imagePullPolicy: Always
+        name: nginx
+        ports:
+        - containerPort: 80
+          name: tcp
+          protocol: TCP
+        resources: {}
+        securityContext:
+          allowPrivilegeEscalation: false
+          privileged: false
+          readOnlyRootFilesystem: false
+          runAsNonRoot: false
+        stdin: true
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        tty: true
+        volumeMounts:
+        - mountPath: /etc/nginx/conf.d/default.conf
+          name: config
+        - mountPath: /application
+          name: application
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - hostPath:
+          path: /home/rashma/application/Rashma_Docker/nginx/nginx.conf
+          type: ""
+        name: config
+      - hostPath:
+          path: /home/rashma/application/Rashma_Laravel
+          type: DirectoryOrCreate
+        name: application
+status: {}

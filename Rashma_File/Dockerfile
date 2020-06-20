@@ -2,11 +2,11 @@ FROM golang:1.12-alpine
 
 RUN apk update && apk upgrade && apk add --no-cache bash git openssh
 
-WORKDIR /app
+WORKDIR /application
 
 COPY . .
 
-WORKDIR /app/src
+WORKDIR /application/src
 
 RUN go get -d -v -t
 RUN go build -o fileServer .

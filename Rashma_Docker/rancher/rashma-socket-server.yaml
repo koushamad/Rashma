@@ -1,0 +1,70 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+    field.cattle.io/creatorId: u-fvwjn
+    field.cattle.io/publicEndpoints: '[{"addresses":["185.165.42.193"],"port":31843,"protocol":"TCP","serviceName":"rashma:rashma-socket-server-nodeport","allNodes":true},{"addresses":["185.165.42.193"],"port":31843,"protocol":"UDP","serviceName":"rashma:rashma-socket-server-nodeport","allNodes":true}]'
+  creationTimestamp: null
+  generation: 1
+  labels:
+    cattle.io/creator: norman
+    workload.user.cattle.io/workloadselector: deployment-rashma-rashma-socket-server
+  name: rashma-socket-server
+  selfLink: /apis/apps/v1/namespaces/rashma/deployments/rashma-socket-server
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      workload.user.cattle.io/workloadselector: deployment-rashma-rashma-socket-server
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+    type: RollingUpdate
+  template:
+    metadata:
+      annotations:
+        cattle.io/timestamp: "2020-06-20T07:50:56Z"
+        field.cattle.io/ports: '[[{"containerPort":1000,"dnsName":"rashma-socket-server-nodeport","kind":"NodePort","name":"tcp1000","protocol":"TCP","sourcePort":0},{"containerPort":1000,"dnsName":"rashma-socket-server-nodeport","kind":"NodePort","name":"udp","protocol":"UDP","sourcePort":0}]]'
+      creationTimestamp: null
+      labels:
+        workload.user.cattle.io/workloadselector: deployment-rashma-rashma-socket-server
+    spec:
+      containers:
+      - env:
+        - name: DB_CONNECTION
+          value: mysql
+        - name: DB_HOST
+          value: rashma:rashma@tcp(rashma-mysql:3306)/rashma
+        - name: DB_MONGO_HOST
+          value: rashma-mongo
+        image: koushamad/rashma-socket-server:latest
+        imagePullPolicy: IfNotPresent
+        name: rashma-socket-server
+        ports:
+        - containerPort: 1000
+          name: tcp1000
+          protocol: TCP
+        - containerPort: 1000
+          name: udp
+          protocol: UDP
+        resources: {}
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities: {}
+          privileged: false
+          readOnlyRootFilesystem: false
+          runAsNonRoot: false
+        stdin: true
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        tty: true
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+status: {}

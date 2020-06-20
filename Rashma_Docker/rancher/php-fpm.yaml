@@ -1,0 +1,168 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "54"
+    field.cattle.io/creatorId: u-fvwjn
+    field.cattle.io/publicEndpoints: '[{"addresses":["185.165.42.193"],"port":31298,"protocol":"TCP","serviceName":"rashma:php-fpm-nodeport","allNodes":true},{"addresses":["185.165.42.193"],"port":31298,"protocol":"UDP","serviceName":"rashma:php-fpm-nodeport","allNodes":true}]'
+  creationTimestamp: null
+  generation: 1
+  labels:
+    cattle.io/creator: norman
+    workload.user.cattle.io/workloadselector: deployment-rashma-php-fpm
+  name: php-fpm
+  selfLink: /apis/apps/v1/namespaces/rashma/deployments/php-fpm
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      workload.user.cattle.io/workloadselector: deployment-rashma-php-fpm
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+    type: RollingUpdate
+  template:
+    metadata:
+      annotations:
+        cattle.io/timestamp: "2020-06-20T07:38:51Z"
+        field.cattle.io/ports: '[[{"containerPort":9000,"dnsName":"php-fpm-nodeport","kind":"NodePort","name":"tcp9000","protocol":"TCP","sourcePort":0},{"containerPort":9000,"dnsName":"php-fpm-nodeport","kind":"NodePort","name":"udp9000","protocol":"UDP","sourcePort":0}]]'
+      creationTimestamp: null
+      labels:
+        workload.user.cattle.io/workloadselector: deployment-rashma-php-fpm
+    spec:
+      containers:
+      - env:
+        - name: APP_DEBUG
+          value: "true"
+        - name: APP_ENV
+          value: SERVER
+        - name: APP_KEY
+          value: base64:+6FWH+3mpy7XizBgQEExrKZsnH3yT5BzwwJZJuUc9yU=
+        - name: APP_NAME
+          value: Rashma
+        - name: APP_URL
+          value: http://rashma.ir
+        - name: AWS_ACCESS_KEY_ID
+        - name: AWS_BUCKET
+        - name: AWS_DEFAULT_REGION
+          value: us-east-1
+        - name: AWS_SECRET_ACCESS_KEY
+        - name: BROADCAST_DRIVER
+          value: redis
+        - name: CACHE_DRIVER
+          value: redis
+        - name: DB_CONNECTION
+          value: mysql
+        - name: DB_DATABASE
+          value: rashma
+        - name: DB_HOST
+          value: mysql
+        - name: DB_MONGO_DATABASE
+          value: rashma
+        - name: DB_MONGO_HOST
+          value: mongo
+        - name: DB_MONGO_PASSWORD
+        - name: DB_MONGO_PORT
+          value: "27017"
+        - name: DB_MONGO_USERNAME
+        - name: DB_PASSWORD
+          value: rashma
+        - name: DB_PORT
+          value: "3306"
+        - name: DB_USERNAME
+          value: rashma
+        - name: LOG_CHANNEL
+          value: slack
+        - name: MAIL_DRIVER
+          value: smtp
+        - name: MAIL_ENCRYPTION
+          value: "null"
+        - name: MAIL_HOST
+          value: smtp.mailtrap.io
+        - name: MAIL_PASSWORD
+          value: "null"
+        - name: MAIL_PORT
+          value: "2525"
+        - name: MAIL_USERNAME
+          value: "null"
+        - name: MIX_PUSHER_APP_CLUSTER
+        - name: MIX_PUSHER_APP_KEY
+        - name: MODEL_CACHE_STORE
+          value: redis
+        - name: PUSHER_APP_CLUSTER
+          value: mt1
+        - name: PUSHER_APP_ID
+        - name: PUSHER_APP_KEY
+        - name: PUSHER_APP_SECRET
+        - name: QUEUE_CONNECTION
+          value: redis
+        - name: REDIS_HOST
+          value: redis
+        - name: REDIS_PASSWORD
+        - name: REDIS_PORT
+          value: "6379"
+        - name: SENTRY_LARAVEL_DSN
+          value: https://238d6986d7a44f519752a00f47b02c5e@sentry.io/1536286
+        - name: SERVER_SLACK_WEBHOOK_EXCEPTION_URL
+          value: https://hooks.slack.com/services/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
+        - name: SERVER_SLACK_WEBHOOK_LOG_URL
+          value: https://hooks.slack.com/services/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
+        - name: SERVER_SLACK_WEBHOOK_REQUEST_URL
+          value: https://hooks.slack.com/services/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
+        - name: SERVER_SLACK_WEBHOOK_URL
+          value: https://hooks.slack.com/services/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
+        - name: SESSION_DRIVER
+          value: redis
+        - name: SESSION_LIFETIME
+          value: "120"
+        - name: TELESCOPE_ENABLED
+          value: "true"
+        image: koushamad/rashma-php-fpm
+        imagePullPolicy: IfNotPresent
+        name: php-fpm
+        ports:
+        - containerPort: 9000
+          name: tcp9000
+          protocol: TCP
+        - containerPort: 9000
+          name: udp9000
+          protocol: UDP
+        resources: {}
+        securityContext:
+          allowPrivilegeEscalation: false
+          privileged: false
+          readOnlyRootFilesystem: false
+          runAsNonRoot: false
+        stdin: true
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        tty: true
+        volumeMounts:
+        - mountPath: /application
+          name: application
+        - mountPath: /etc/cron.d/cron
+          name: crontab
+        - mountPath: /etc/php/7.3/fpm/conf.d/99-overrides.ini
+          name: config
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - hostPath:
+          path: /home/rashma/application/Rashma_Laravel
+          type: DirectoryOrCreate
+        name: application
+      - hostPath:
+          path: /home/rashma/application/Rashma_Docker/php-fpm/crontab
+          type: ""
+        name: crontab
+      - hostPath:
+          path: /home/rashma/application/Rashma_Docker/php-fpm/php-ini-overrides.ini
+          type: ""
+        name: config
+status: {}

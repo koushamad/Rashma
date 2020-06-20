@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f docker-compose-deploy.yaml --out ./Rashma_Docker/k8s
+    kompose.version: 1.21.0 (992df58d8)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: rashma-file-server
+  name: rashma-file-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: rashma-file-server
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f docker-compose-deploy.yaml --out ./Rashma_Docker/k8s
+        kompose.version: 1.21.0 (992df58d8)
+      creationTimestamp: null
+      labels:
+        io.kompose.network/backend: "true"
+        io.kompose.service: rashma-file-server
+    spec:
+      containers:
+      - env:
+        - name: DB_HOST
+          value: rashma-mysql
+        - name: DB_MONGO_HOST
+          value: rashma-mongo
+        - name: REDIS_HOST
+          value: rashma-reddis
+        image: koushamad/rashma-file-server:latest
+        imagePullPolicy: ""
+        name: rashma-file
+        ports:
+        - containerPort: 8080
+        resources: {}
+        volumeMounts:
+        - mountPath: /app/tmp
+          name: rashma-file-server-claim0
+      restartPolicy: Always
+      serviceAccountName: ""
+      volumes:
+      - name: rashma-file-server-claim0
+        persistentVolumeClaim:
+          claimName: rashma-file-server-claim0
+status: {}

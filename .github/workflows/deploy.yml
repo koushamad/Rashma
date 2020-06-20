@@ -31,7 +31,7 @@ on:
             rancher_key: ${{ secrets.RANCHER_KEY }}
             project_id: rashma
             stack_name: rashma
-            service_name: php-fpm
+            service_name: rashma-php-fpm
             docker_image: koushamad/rashma-php-fpm:latest
         - uses: sekassel-research/actions-rancher-update@1.0.0
           with:
@@ -40,7 +40,7 @@ on:
             rancher_key: ${{ secrets.RANCHER_KEY }}
             project_id: rashma
             stack_name: rashma
-            service_name: file-server
+            service_name: rashma-file-server
             docker_image: koushamad/rashma-file-server:latest
         - uses: sekassel-research/actions-rancher-update@1.0.0
           with:
@@ -49,7 +49,7 @@ on:
             rancher_key: ${{ secrets.RANCHER_KEY }}
             project_id: rashma
             stack_name: rashma
-            service_name: file-server
+            service_name: rashma-git-server
             docker_image: koushamad/rashma-git-server:latest
         - uses: sekassel-research/actions-rancher-update@1.0.0
           with:
@@ -58,5 +58,5 @@ on:
             rancher_key: ${{ secrets.RANCHER_KEY }}
             project_id: rashma
             stack_name: rashma
-            service_name: socket-server
+            service_name: rashma-socket-server
             docker_image: koushamad/rashma-socket-server:latest
