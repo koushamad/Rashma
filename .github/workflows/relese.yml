@@ -16,6 +16,7 @@ jobs:
         uses: koushamad/Rashma@master
         with:
           fetch-depth: 1
+      - name: Test
         run: echo ${{ls}}
       - name: Test
         run: echo ${{pwd}}
