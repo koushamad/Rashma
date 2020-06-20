@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - master
-  pull_request:
-    branches:
-      - master
 
 jobs:
   Build:
@@ -31,6 +28,7 @@ jobs:
 
   Deploy:
     runs-on: ubuntu-latest
+    needs: Build
     steps:
       - uses: sekassel-research/actions-rancher-update@1.0.0
         with:
