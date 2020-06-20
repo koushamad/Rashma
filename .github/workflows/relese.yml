@@ -41,31 +41,31 @@ jobs:
           project_id: rashma
           stack_name: rashma
           service_name: rashma-php-fpm
-          docker_image: koushamad/rashma-php-fpm:latest
-      - uses: sekassel-research/actions-rancher-update@1.0.0
-        with:
-          rancher_url: https://dashboard.docker.host/v3
-          rancher_access: ${{ secrets.RANCHER_ACCESS }}
-          rancher_key: ${{ secrets.RANCHER_KEY }}
-          project_id: rashma
-          stack_name: rashma
-          service_name: rashma-file-server
-          docker_image: koushamad/rashma-file-server:latest
-      - uses: sekassel-research/actions-rancher-update@1.0.0
-        with:
-          rancher_url: https://dashboard.docker.host/v3
-          rancher_access: ${{ secrets.RANCHER_ACCESS }}
-          rancher_key: ${{ secrets.RANCHER_KEY }}
-          project_id: rashma
-          stack_name: rashma
-          service_name: rashma-git-server
-          docker_image: koushamad/rashma-git-server:latest
-      - uses: sekassel-research/actions-rancher-update@1.0.0
-        with:
-          rancher_url: https://dashboard.docker.host/v3
-          rancher_access: ${{ secrets.RANCHER_ACCESS }}
-          rancher_key: ${{ secrets.RANCHER_KEY }}
-          project_id: rashma
-          stack_name: rashma
-          service_name: rashma-socket-server
-          docker_image: koushamad/rashma-socket-server:latest
+          docker_image: koushamad/rashma-php-fpm
+#      - uses: sekassel-research/actions-rancher-update@1.0.0
+#        with:
+#          rancher_url: https://dashboard.docker.host/v3
+#          rancher_access: ${{ secrets.RANCHER_ACCESS }}
+#          rancher_key: ${{ secrets.RANCHER_KEY }}
+#          project_id: rashma
+#          stack_name: rashma
+#          service_name: rashma-file-server
+#          docker_image: koushamad/rashma-file-server:latest
+#      - uses: sekassel-research/actions-rancher-update@1.0.0
+#        with:
+#          rancher_url: https://dashboard.docker.host/v3
+#          rancher_access: ${{ secrets.RANCHER_ACCESS }}
+#          rancher_key: ${{ secrets.RANCHER_KEY }}
+#          project_id: rashma
+#          stack_name: rashma
+#          service_name: rashma-git-server
+#          docker_image: koushamad/rashma-git-server:latest
+#      - uses: sekassel-research/actions-rancher-update@1.0.0
+#        with:
+#          rancher_url: https://dashboard.docker.host/v3
+#          rancher_access: ${{ secrets.RANCHER_ACCESS }}
+#          rancher_key: ${{ secrets.RANCHER_KEY }}
+#          project_id: rashma
+#          stack_name: rashma
+#          service_name: rashma-socket-server
+#          docker_image: koushamad/rashma-socket-server:latest
