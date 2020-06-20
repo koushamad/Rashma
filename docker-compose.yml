@@ -22,7 +22,7 @@ services:
       tty: true
       volumes:
         - ./Rashma-Docker/mysql/data/:/var/lib/mysql/
-        - ./docker/mysql/my.cnf:/etc/mysql/my.cnf
+        - ./Rashma-Docker/mysql/my.cnf:/etc/mysql/my.cnf
       environment:
         MYSQL_DATABASE: ${DB_DATABASE}
         MYSQL_USER: ${DB_USERNAME}
@@ -34,9 +34,12 @@ services:
         - backend
 
     rashma-mongo:
+      image: mongo:3.6.18
       container_name: rashma-mongo
       restart: unless-stopped
-      image: mongo
+      volumes:
+        - ./Rashma-Docker/mongo/data:/data
+        - ./Rashma-Docker/mongo/log:/var/log/mongodb
       ports:
         - 27017:27017
       networks:
@@ -64,8 +67,8 @@ services:
       container_name: rashma-rabbit
       restart: unless-stopped
       environment:
-        RABBITMQ_DEFAULT_USER: rabbitmq
-        RABBITMQ_DEFAULT_PASSWORD: rabbitmq
+        RABBITMQ_DEFAULT_USER: ${RABBITMQ_USER}
+        RABBITMQ_DEFAULT_PASSWORD: ${RABBITMQ_PASS}
         RABBITMQ_DEFAULT_VHOST: /
         RABBITMQ_SSL_CACERTFILE: /rootCA.pem
         RABBITMQ_SSL_CERTFILE: /rootCA.pem
