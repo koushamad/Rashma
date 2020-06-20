@@ -12,11 +12,14 @@ jobs:
   Build:
     runs-on: ubuntu-latest
     steps:
-      - uses: koushamad/Rashma@master
+      - name: Checkout Project
+        uses: koushamad/Rashma@master
+        with:
+          fetch-depth: 1
       - name: Login to DockerHub Registry
         run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
       - name: Build the docker-compose stack
-        run: docker-compose up -d
+        run: docker-compose --log-level INFO up -d --build
       - name: Push rashma-php-fpm
         run: docker push koushamad/rashma-php-fpm:latest
       - name: Push rashma-file-server
