@@ -22,7 +22,7 @@ services:
       tty: true
       volumes:
         - ./Rashma-Docker/mysql/data/:/var/lib/mysql/
-        - ./Rashma-Docker/mysql/my.cnf:/etc/mysql/my.cnf
+        - ./Rashma-Docker/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
       environment:
         MYSQL_DATABASE: ${DB_DATABASE}
         MYSQL_USER: ${DB_USERNAME}

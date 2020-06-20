@@ -4,7 +4,7 @@ on:
       - master
 
   jobs:
-    build:
+    release:
       runs-on: ubuntu-latest
       steps:
         - uses: koushamad/Rashma@master
@@ -20,10 +20,6 @@ on:
           run: docker push koushamad/rashma-socket-server:latest
         - name: Push rashma-git-server
           run: docker push koushamad/rashma-git-server:latest
-
-    release:
-      runs-on: ubuntu-latest
-      steps:
         - uses: sekassel-research/actions-rancher-update@1.0.0
           with:
             rancher_url: https://dashboard.docker.host/v3
