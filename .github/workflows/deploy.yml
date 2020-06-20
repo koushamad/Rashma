@@ -1,4 +1,4 @@
-name: Build
+name: DEPLOY
 
 on:
   push:
@@ -16,4 +16,12 @@ jobs:
       - name: Login to DockerHub Registry
         run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
       - name: Build the docker-compose stack
-        run: ./deploy.sh
+        run: docker-compose -f docker-compose.yml up -d
+      - name: Push rashma-php-fpm
+        run: docker push koushamad/rashma-php-fpm:latest
+      - name: Push rashma-file-server
+        run: docker push koushamad/rashma-file-server:latest
+      - name: Push rashma-socket-server
+        run: docker push koushamad/rashma-socket-server:latest
+      - name: Push rashma-git-server
+        run: docker push koushamad/rashma-git-server:latest
