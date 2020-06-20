@@ -21,8 +21,8 @@ services:
       working_dir: /application
       tty: true
       volumes:
-        - ./Rashma-Docker/mysql/data/:/var/lib/mysql/
-        - ./Rashma-Docker/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+        - ./Rashma_Docker/mysql/data/:/var/lib/mysql/
+        - ./Rashma_Docker/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
       environment:
         MYSQL_DATABASE: ${DB_DATABASE}
         MYSQL_USER: ${DB_USERNAME}
@@ -38,8 +38,8 @@ services:
       container_name: rashma-mongo
       restart: unless-stopped
       volumes:
-        - ./Rashma-Docker/mongo/data:/data
-        - ./Rashma-Docker/mongo/log:/var/log/mongodb
+        - ./Rashma_Docker/mongo/data:/data
+        - ./Rashma_Docker/mongo/log:/var/log/mongodb
       ports:
         - 27017:27017
       networks:

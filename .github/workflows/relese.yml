@@ -16,7 +16,7 @@ jobs:
       - name: Login to DockerHub Registry
         run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
       - name: Build the docker-compose stack
-        run: docker-compose -f docker-compose.yml up -d
+        run: docker-compose up -d
       - name: Push rashma-php-fpm
         run: docker push koushamad/rashma-php-fpm:latest
       - name: Push rashma-file-server
