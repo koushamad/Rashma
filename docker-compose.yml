@@ -121,8 +121,7 @@ services:
         DB_MONGO_HOST: ${DB_MONGO_HOST}
         REDIS_HOST: ${REDIS_HOST}
       volumes:
-        - ./Rashma_File:/application
-        - ./Rashma_Docker/tmp:/app/tmp/files
+        - ./Rashma_Docker/tmp:/app/tmp
       ports:
         - 8000:8000
       links:
