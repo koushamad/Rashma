@@ -38,6 +38,6 @@ jobs:
           rancher_access: ${{ secrets.RANCHER_ACCESS }}
           rancher_key: ${{ secrets.RANCHER_KEY }}
           project_id: rashma
-          stack_name: 102
+          stack_name: rashma
           service_name: rashma-file-server
           docker_image: koushamad/rashma-file-server:latest
