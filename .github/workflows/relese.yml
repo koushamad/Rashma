@@ -9,35 +9,22 @@ on:
       - master
 
 jobs:
-#  Build:
-#    runs-on: ubuntu-latest
-#    steps:
-#      - name: Checkout Project
-#        uses: actions/checkout@v2
-#        with:
-#          fetch-depth: 1
-#      - name: Login to DockerHub Registry
-#        run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
-#      - name: Build the docker-compose stack
-#        run: docker-compose --log-level INFO up -d --build
-#      - name: Push rashma-php-fpm
-#        run: docker push koushamad/rashma-php-fpm:latest
-#      - name: Push rashma-file-server
-#        run: docker push koushamad/rashma-file-server:latest
-#      - name: Push rashma-socket-server
-#        run: docker push koushamad/rashma-socket-server:latest
-#      - name: Push rashma-git-server
-#        run: docker push koushamad/rashma-git-server:latest
-
-  release:
+  Build:
     runs-on: ubuntu-latest
     steps:
-      - uses: sekassel-research/actions-rancher-update@1.0.0
+      - name: Checkout Project
+        uses: actions/checkout@v2
         with:
-          rancher_url: ${{secrets.RANCHER_ENDPOINT}}
-          rancher_access: ${{ secrets.RANCHER_ACCESS }}
-          rancher_key: ${{ secrets.RANCHER_KEY }}
-          project_id: rashma
-          stack_name: rashma
-          service_name: rashma-file-server
-          docker_image: koushamad/rashma-file-server:latest
+          fetch-depth: 1
+      - name: Login to DockerHub Registry
+        run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
+      - name: Build the docker-compose stack
+        run: docker-compose --log-level INFO up -d --build
+      - name: Push rashma-php-fpm
+        run: docker push koushamad/rashma-php-fpm:latest
+      - name: Push rashma-file-server
+        run: docker push koushamad/rashma-file-server:latest
+      - name: Push rashma-socket-server
+        run: docker push koushamad/rashma-socket-server:latest
+      - name: Push rashma-git-server
+        run: docker push koushamad/rashma-git-server:latest
