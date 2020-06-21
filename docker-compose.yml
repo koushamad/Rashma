@@ -59,14 +59,14 @@ services:
       networks:
         - backend
 
-      rashma-socketio-client-tool:
-        image: amritb/socketio-client-tool:latest
-        container_name: rashma-socket-client
-        restart: unless-stopped
-        ports:
-          - 8080:8080
-        networks:
-          - backend
+    rashma-socketio-client-tool:
+      image: amritb/socketio-client-tool:latest
+      container_name: rashma-socket-client
+      restart: unless-stopped
+      ports:
+        - 8080:8080
+      networks:
+        - backend
 
     rashma-webserver:
       image: nginx:alpine
