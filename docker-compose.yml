@@ -21,13 +21,13 @@ services:
       working_dir: /application
       tty: true
       volumes:
-        - ./Rashma_Docker/mysql/data/:/var/lib/mysql/
+        - ./Rashma_Docker/mysql/data:/var/lib/mysql
         - ./Rashma_Docker/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
       environment:
-        MYSQL_DATABASE: ${DB_DATABASE}
-        MYSQL_USER: ${DB_USERNAME}
-        MYSQL_PASSWORD: ${DB_PASSWORD}
-        MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+        MYSQL_DATABASE: ${MYSQL_DATABASE}
+        MYSQL_USER: ${MYSQL_USER}
+        MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+        MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       ports:
         - 3306:3306
       networks:
@@ -44,6 +44,29 @@ services:
         - 27017:27017
       networks:
         - backend
+
+    rashma-rabbitmq:
+      image: library/rabbitmq:3.7.5-management
+      container_name: 'rashma-rabbitmq'
+      environment:
+        RABBITMQ_ERLANG_COOKIE: ${RABBITMQ_ERLANG_COOKIE}
+        RABBITMQ_DEFAULT_USER: ${RABBITMQ_DEFAULT_USER}
+        RABBITMQ_DEFAULT_PASS: ${RABBITMQ_DEFAULT_PASS}
+        RABBITMQ_DEFAULT_VHOST: ${RABBITMQ_DEFAULT_VHOST}
+      ports:
+        - 15672:15672
+        - 5672:5672
+      networks:
+        - backend
+
+      rashma-socketio-client-tool:
+        image: amritb/socketio-client-tool:latest
+        container_name: rashma-socket-client
+        restart: unless-stopped
+        ports:
+          - 8080:8080
+        networks:
+          - backend
 
     rashma-webserver:
       image: nginx:alpine
@@ -62,31 +85,8 @@ services:
       networks:
         - backend
 
-    rashma-rabbitmq:
-      image: library/rabbitmq:3.7.5-management
-      container_name: 'rashma-rabbitmq'
-      environment:
-        RABBITMQ_ERLANG_COOKIE: ${RABBITMQ_ERLANG_COOKIE}
-        RABBITMQ_DEFAULT_USER: ${RABBIT_USER}
-        RABBITMQ_DEFAULT_PASS: ${RABBIT_PASSWORD}
-        RABBITMQ_DEFAULT_VHOST: ${RABBITMQ_DEFAULT_VHOST}
-      ports:
-        - 15672:15672
-        - 5672:5672
-      networks:
-        - backend
-
-    rashma-socketio-client-tool:
-      image: amritb/socketio-client-tool:latest
-      container_name: rashma-socket-client
-      restart: unless-stopped
-      ports:
-        - 8080:8080
-      networks:
-        - backend
-
     rashma-php-fpm:
-      image: koushamad/rashma-php-fpm:0.0.1
+      image: koushamad/rashma-php-fpm:0.0.2
       build: ./Rashma_Docker/php-fpm
       container_name: rashma-php-fpm
       restart: unless-stopped
@@ -113,15 +113,16 @@ services:
       build:
         context: ./Rashma_File
         dockerfile: Dockerfile
-      image: koushamad/rashma-file-server:0.0.1
+      image: koushamad/rashma-file-server:0.0.2
       container_name: rashma-file
       restart: unless-stopped
       environment:
-        DB_HOST: rashma-mysql
-        DB_MONGO_HOST: rashma-mongo
-        REDIS_HOST: rashma-reddis
+        DB_HOST: ${DB_MYSQL_HOST}
+        DB_MONGO_HOST: ${DB_MONGO_HOST}
+        REDIS_HOST: ${REDIS_HOST}
       volumes:
-        - ./Rashma_Docker/tmp:/app/tmp
+        - ./Rashma_File:/application
+        - ./Rashma_Docker/tmp:/app/tmp/files
       ports:
         - 8000:8000
       links:
@@ -139,13 +140,13 @@ services:
       build:
         context: ./Rashma_Socket
         dockerfile: Dockerfile
-      image: koushamad/rashma-socket-server:0.0.1
+      image: koushamad/rashma-socket-server:0.0.2
       container_name: rashma-socket
       restart: unless-stopped
       environment:
-        DB_CONNECTION: mysql
-        DB_HOST: rashma:rashma@tcp(rashma-mysql:3306)/rashma
-        DB_MONGO_HOST: rashma-mongo
+        DB_HOST: ${DB_HOST}
+        DB_MONGO_HOST: ${DB_MONGO_HOST}
+        DB_CONNECTION: ${DB_MYSQL_HOST}
       ports:
         - 1000:1000
       links:
@@ -163,7 +164,7 @@ services:
       build:
         context: .
         dockerfile: Dockerfile
-      image: koushamad/rashma-git-server:0.0.1
+      image: koushamad/rashma-git-server:0.0.2
       container_name: rashma-git
       restart: unless-stopped
       working_dir: /application
