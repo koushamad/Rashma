@@ -4,7 +4,7 @@ RUN apk update && apk upgrade && apk add --no-cache bash git openssh
 
 WORKDIR /application
 
-COPY . .
+#COPY . .
 
 RUN go get -d -v -t
 RUN go build -o socketServer .
