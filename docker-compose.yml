@@ -86,7 +86,7 @@ services:
         - backend
 
     rashma-php-fpm:
-      image: koushamad/rashma-php-fpm:0.0.4
+      image: koushamad/rashma-php-fpm:0.0.5
       build: ./Rashma_Docker/php-fpm
       container_name: rashma-php-fpm
       restart: unless-stopped
@@ -113,7 +113,7 @@ services:
       build:
         context: ./Rashma_File
         dockerfile: Dockerfile
-      image: koushamad/rashma-file-server:0.0.4
+      image: koushamad/rashma-file-server:0.0.5
       container_name: rashma-file
       restart: unless-stopped
       environment:
@@ -139,7 +139,7 @@ services:
       build:
         context: ./Rashma_Socket
         dockerfile: Dockerfile
-      image: koushamad/rashma-socket-server:0.0.4
+      image: koushamad/rashma-socket-server:0.0.5
       container_name: rashma-socket
       restart: unless-stopped
       environment:
@@ -163,7 +163,7 @@ services:
       build:
         context: .
         dockerfile: Dockerfile
-      image: koushamad/rashma-git-server:0.0.4
+      image: koushamad/rashma-git-server:0.0.5
       container_name: rashma-git
       restart: unless-stopped
       working_dir: /application
