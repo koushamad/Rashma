@@ -28,3 +28,16 @@ jobs:
         run: docker push koushamad/rashma-socket-server:latest
       - name: Push rashma-git-server
         run: docker push koushamad/rashma-git-server:latest
+
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: sekassel-research/actions-rancher-update@1.0.0
+        with:
+          rancher_url: ${{secrets.RANCHER_ENDPOINT}}
+          rancher_access: ${{ secrets.RANCHER_ACCESS }}
+          rancher_key: ${{ secrets.RANCHER_KEY }}
+          project_id: rashma
+          stack_name: 102
+          service_name: rashma-file-server
+          docker_image: koushamad/rashma-file-server:latest
